@@ -10,10 +10,12 @@ import javax.swing.JPanel;
 public class Square  extends Shape {
 	private double length, width;
 	 public void setProperties(Map<String, Double> properties) {
-		 length=properties.get("1");
-		 width=properties.get("2");
+		 length=properties.get("Height");
+		 width=properties.get("Width");
 	 }
-	   
+	 boolean CheckBounds(java.awt.Point p) {
+		  return (p.x>=getPosition().x-(length/2)&&p.x<=getPosition().x+(length/2)&&p.y>=getPosition().y-(width/2)&&p.y<=getPosition().y+(width/2));
+	  }
 	    public void draw(Graphics canvas) {
 			  canvas.fillRect(getPosition().x, getPosition().y,(int)length,(int)width);
 			
@@ -24,5 +26,11 @@ public class Square  extends Shape {
 		    	super.paintComponent(g);
 				this.draw(g);
 			}
+		  public void setBoundBox() {
+			  this.BoundBox[0].x=(int)(getPosition().x-length/2);
+			  this.BoundBox[0].y=(int)(getPosition().y-width/2);
+			  this.BoundBox[1].x=(int)(getPosition().x+length/2);
+			  this.BoundBox[1].y=(int)(getPosition().y+width/2);
+		  }
 	    
 }
