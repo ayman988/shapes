@@ -15,7 +15,9 @@ public class Circle extends Shape  {
 		// TODO Auto-generated method stub
 		radius=properties.get("1");
 	} 
-	
+	  boolean CheckBounds(java.awt.Point p) {
+		  return (p.x>=getPosition().x-(radius/2)&&p.x<=getPosition().x+(radius/2)&&p.y>=getPosition().y-(radius/2)&&p.y<=getPosition().y+(radius/2));
+	  }
 	
 	  public void draw(Graphics canvas) {
 		  canvas.setColor(getFillColor());
@@ -28,5 +30,11 @@ public class Circle extends Shape  {
 	    	super.paintComponent(g);
 			this.draw(g);
 		}
+	    public void setBoundBox() {
+			  this.BoundBox[0].x=(int)(getPosition().x-radius);
+			  this.BoundBox[0].y=(int)(getPosition().y-radius);
+			  this.BoundBox[1].x=(int)(getPosition().x+radius);
+			  this.BoundBox[1].y=(int)(getPosition().y+radius);
+		  }
     
 }
